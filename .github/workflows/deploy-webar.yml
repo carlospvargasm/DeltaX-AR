@@ -1,0 +1,40 @@
+name: Deploy DeltaX WebAR
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'webar/**'
+      - '.github/workflows/deploy-webar.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build recognition markers from current pitch
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y poppler-utils
+          mkdir -p webar/assets/markers /tmp/slides
+          curl -L --fail --retry 3 'https://docs.google.com/presentation/d/1gXHZ6f4bHimwORVM4R9oKbtQSxYUYiMTZv0xTjn8uIU/export/pdf' -o /tmp/pitch.pdf
+          pdftoppm -f 1 -l 11 -jpeg -jpegopt quality=70 -scale-to-x 1000 -scale-to-y -1 /tmp/pitch.pdf /tmp/slides/lamina
+          n=1; for f in /tmp/slides/lamina-*.jpg; do printf -v p 'webar/assets/markers/lamina%02d.jpg' "$n"; cp "$f" "$p"; n=$((n+1)); done
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload WebAR
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: webar
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
