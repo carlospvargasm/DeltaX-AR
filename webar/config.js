@@ -1,14 +1,14 @@
 window.DELTAX_SCENES = [
- {id:1,title:'DESCUBRIR',sub:'Suelo · Agua · Cultivo · Prácticas',action:'discover'},
- {id:2,title:'CERRAR LA BRECHA',sub:'Datos → Evidencia → Oportunidades',action:'bridge'},
- {id:3,title:'CONECTAR',sub:'Cooperativas · Familias · Comunidades · Compradores',action:'connect'},
- {id:4,title:'HACER VISIBLE',sub:'Evidencia local → Marketplace DeltaX',action:'market'},
- {id:5,title:'REPLICAR',sub:'La evidencia puede crecer más allá del territorio',action:'expand'},
- {id:6,title:'YA ESTÁ OCURRIENDO',sub:'25 organizaciones · 1.721 productores · 675 mujeres · 181 jóvenes',action:'pulse'},
- {id:7,title:'MODELO DE NEGOCIO',sub:'Valor ambiental → mercado',action:'value'},
- {id:8,title:'SAN CARLOS DOS',sub:'Cada dato tiene una historia',action:'human'},
- {id:9,title:'DAR VALOR',sub:'Evidencia → tCO₂e → Crédito de Carbono → Marketplace → Mundo',action:'world'},
- {id:10,title:'LA SIGUIENTE ETAPA',sub:'Cada historia tiene un valor',action:'future'},
- {id:11,title:'CADA HISTORIA TIENE UN VALOR',sub:'DeltaX ayuda al mundo a descubrirlo',action:'final'}
+ {id:1,title:'HAY UN VALOR INVISIBLE',sub:'Nace en las tierras, en los campos. Crece con las prácticas de miles de agricultores y sus familias. Pero todavía pocos pueden verlo.',message:'LOS INVITAMOS A DESCUBRIRLO JUNTOS',action:'discover'},
+ {id:2,title:'EL PROBLEMA',sub:'Cada día, millones de agricultores cuidan y transforman sus tierras. Pero entre ese esfuerzo y las oportunidades que puede generar, todavía existe una enorme distancia.',message:'HAGAMOS VISIBLE ESE ESFUERZO',action:'bridge'},
+ {id:3,title:'CON QUIÉN TRABAJAMOS',sub:'Asociaciones y cooperativas · Familias rurales · Comunidades productivas · Compradores',message:'ESE VALOR YA EXISTE. SOLO FALTA HACERLO VISIBLE.',action:'connect'},
+ {id:4,title:'EVIDENCIA LOCAL · MARKETPLACE DELTAX',sub:'Cuando estas historias salen del territorio, llegan a quienes buscan producir, comprar e invertir de otra manera.',message:'DE EVIDENCIA LOCAL A VISIBILIDAD MÁS ALLÁ DEL TERRITORIO',action:'market'},
+ {id:5,title:'APRENDIMOS A HACERLO REPLICABLE',sub:'Lo que comienza en un territorio puede viajar hacia nuevas oportunidades.',message:'ESTO PUEDE CRECER MUCHO MÁS',action:'expand'},
+ {id:6,title:'ESTO YA ESTÁ OCURRIENDO',sub:'25 organizaciones · 1.721 productores · 675 mujeres · 181 jóvenes',message:'EL VALOR INVISIBLE YA SE ESTÁ HACIENDO VISIBLE',action:'pulse'},
+ {id:7,title:'MODELO DE NEGOCIO OCURRIENDO',sub:'El valor ambiental encuentra mercado y genera nuevas oportunidades.',message:'DEL VALOR AMBIENTAL AL MERCADO',action:'value'},
+ {id:8,title:'UNA HISTORIA CON NOMBRE PROPIO · SAN CARLOS DOS',sub:'Detrás de este mapa, cada historia tiene un nombre. San Carlos Dos muestra cómo hacer visible el trabajo del territorio puede abrir nuevas oportunidades.',message:'CADA DATO TIENE UNA HISTORIA',action:'human'},
+ {id:9,title:'DE EVIDENCIA A OPORTUNIDADES',sub:'Expedientes Digitales · Expedientes Ambientales · Créditos de Carbono tCO₂e · Bonos de Carbono / Azules',message:'DEL TERRITORIO HACIA NUEVAS OPORTUNIDADES',action:'world'},
+ {id:10,title:'LA SIGUIENTE ETAPA',sub:'Esta historia recién comienza. Cada agricultor, familia y organización que se suma abre nuevas oportunidades.',message:'QUE NADIE PERMANEZCA INVISIBLE POR NO PODER DEMOSTRAR EL VALOR DE LO QUE HACE',action:'future'},
+ {id:11,title:'CADA HISTORIA TIENE UN VALOR',sub:'Comenzamos buscando un valor invisible. Hoy podemos hacerlo visible, llevarlo al mundo y transformarlo en nuevas oportunidades.',message:'DELTAX AYUDA AL MUNDO A DESCUBRIRLO',action:'final'}
 ];
-window.DELTAX_TRACKING={targets:DELTAX_SCENES.map(s=>({scene:s.id,src:`assets/markers/lamina${String(s.id).padStart(2,'0')}.jpg`})),maxFeatures:1100,matchDistance:46,minGoodMatches:22,minLead:5,confirmFrames:2,scanEveryMs:420};
+window.DELTAX_TRACKING={targets:DELTAX_SCENES.map(s=>({scene:s.id,src:`assets/markers/lamina${String(s.id).padStart(2,'0')}.jpg`})),maxFeatures:1250,matchDistance:44,minGoodMatches:24,minLead:7,confirmFrames:3,scanEveryMs:420};
