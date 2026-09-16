@@ -11,4 +11,4 @@ window.DELTAX_SCENES = [
  {id:10,title:'LA SIGUIENTE ETAPA',sub:'Cada historia tiene un valor',action:'future'},
  {id:11,title:'CADA HISTORIA TIENE UN VALOR',sub:'DeltaX ayuda al mundo a descubrirlo',action:'final'}
 ];
-window.DELTAX_TRACKING={targets:DELTAX_SCENES.map(s=>({scene:s.id,src:`assets/markers/lamina${String(s.id).padStart(2,'0')}.jpg`})),maxFeatures:900,matchDistance:48,minGoodMatches:18,confirmFrames:2,scanEveryMs:550};
+window.DELTAX_TRACKING={targets:DELTAX_SCENES.map(s=>({scene:s.id,src:`assets/markers/lamina${String(s.id).padStart(2,'0')}.jpg`})),maxFeatures:1100,matchDistance:46,minGoodMatches:22,minLead:5,confirmFrames:2,scanEveryMs:420};
