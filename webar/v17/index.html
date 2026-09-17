@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#071d18">
+<title>DeltaX WebAR v17</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+  <video id="camera" autoplay playsinline muted></video>
+  <canvas id="captureCanvas" hidden></canvas>
+  <div class="shade"></div>
+
+  <header class="topbar">
+    <div class="brand"><strong>DeltaX</strong><span>WebAR</span></div>
+    <button id="flip" class="round" aria-label="Cambiar cámara">↺</button>
+  </header>
+
+  <section class="experience" aria-live="polite">
+    <img id="mascot" class="mascot" src="../assets/torogoz-deltax.webp" alt="Mascota DeltaX Torogoz">
+    <div class="message">
+      <div class="eyebrow">EXPERIENCIA DELTAX</div>
+      <h1 id="title">El valor invisible está aquí</h1>
+      <p id="copy">Mueve tu cámara y descubre cómo el campo puede conectar con nuevas oportunidades.</p>
+    </div>
+  </section>
+
+  <nav class="slides" aria-label="Escenas">
+    <button data-slide="0" class="active">1</button><button data-slide="1">2</button><button data-slide="2">3</button>
+  </nav>
+
+  <footer class="controls">
+    <button id="previous" class="ghost">‹</button>
+    <button id="capture" class="shutter" aria-label="Tomar foto"><span></span></button>
+    <button id="next" class="ghost">›</button>
+  </footer>
+
+  <div id="preview" class="preview" hidden>
+    <img id="photo" alt="Foto capturada">
+    <div class="preview-actions"><button id="retake">Repetir</button><a id="save" download="DeltaX-selfie.jpg">Guardar</a></div>
+  </div>
+
+  <div id="permission" class="permission">
+    <img src="../assets/torogoz-deltax.webp" alt="Torogoz DeltaX">
+    <h2>Descubre DeltaX</h2>
+    <p>Activa la cámara para comenzar. Puedes usar la cámara frontal para una selfie o la trasera para explorar.</p>
+    <button id="start">Activar cámara</button>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
