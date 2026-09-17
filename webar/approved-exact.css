@@ -1,0 +1,11 @@
+/* Exact approved welcome artwork; interactive controls are transparent overlays. */
+body:not(.camera-on) #app{background:#06110b url("data:image/webp;base64,UklGRnJ4AABXRUJQVlA4IGZ4AACQTQKdASqAAYAEPrFSok0nJKquJdS7YcAWCWM6gDUuzh1M9eJTh1WgAAA") center top/auto 100% no-repeat!important}
+body:not(.camera-on) .approved-head,body:not(.camera-on) #status,body:not(.camera-on) #reticle,body:not(.camera-on) .approved-footer{display:none!important}
+body:not(.camera-on) .controls{display:block!important;position:absolute!important;inset:0!important;z-index:30!important;pointer-events:none!important}
+body:not(.camera-on) #start{display:block!important;position:absolute!important;left:14%!important;top:69.2%!important;width:72%!important;height:5.2%!important;min-height:0!important;padding:0!important;opacity:0!important;pointer-events:auto!important}
+body:not(.camera-on) #manual{display:block!important;position:absolute!important;left:24%!important;top:75.4%!important;width:52%!important;height:3.8%!important;opacity:0!important;pointer-events:auto!important}
+body:not(.camera-on) .capture-controls{display:flex!important;position:absolute!important;left:14%!important;right:14%!important;bottom:9.5%!important;height:7%!important;transform:none!important;justify-content:space-between!important;z-index:31!important;pointer-events:none!important}
+body:not(.camera-on) .capture-controls button,body:not(.camera-on) .capture-controls a{width:23%!important;height:100%!important;opacity:0!important;pointer-events:auto!important}
+body.camera-on #camera{display:block}
+body.camera-on .approved-head{display:block}
+@media (min-aspect-ratio:1/2){body:not(.camera-on) #app{background-size:auto 100%}}
