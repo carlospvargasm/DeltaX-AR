@@ -1,13 +1,9 @@
 window.DX_SCENES=[
-{id:1,title:'HAY UN VALOR INVISIBLE',sub:'Nace en los campos. Crece con las prácticas de miles de agricultores y sus familias.',message:'LOS INVITAMOS A DESCUBRIRLO JUNTOS',action:'discover'},
-{id:2,title:'EL PROBLEMA',sub:'Entre el esfuerzo de los agricultores y las oportunidades que puede generar todavía existe una enorme distancia.',message:'HAGAMOS VISIBLE ESE ESFUERZO',action:'bridge'},
-{id:3,title:'CON QUIÉN TRABAJAMOS',sub:'Asociaciones y cooperativas · Familias rurales · Comunidades productivas · Compradores',message:'ESE VALOR YA EXISTE. SOLO FALTA HACERLO VISIBLE.',action:'connect'},
-{id:4,title:'EVIDENCIA LOCAL · MARKETPLACE DELTAX',sub:'Las historias salen del territorio y llegan a quienes buscan producir, comprar e invertir de otra manera.',message:'DE EVIDENCIA LOCAL A VISIBILIDAD MÁS ALLÁ DEL TERRITORIO',action:'market'},
-{id:5,title:'APRENDIMOS A HACERLO REPLICABLE',sub:'Lo que comienza en un territorio puede viajar hacia nuevas oportunidades.',message:'ESTO PUEDE CRECER MUCHO MÁS',action:'expand'},
-{id:6,title:'ESTO YA ESTÁ OCURRIENDO',sub:'25 organizaciones · 1.721 productores · 675 mujeres · 181 jóvenes',message:'EL VALOR INVISIBLE YA SE ESTÁ HACIENDO VISIBLE',action:'pulse'},
-{id:7,title:'MODELO DE NEGOCIO OCURRIENDO',sub:'El valor ambiental encuentra mercado y genera nuevas oportunidades.',message:'DEL VALOR AMBIENTAL AL MERCADO',action:'value'},
-{id:8,title:'UNA HISTORIA CON NOMBRE PROPIO · SAN CARLOS DOS',sub:'Cada dato tiene una historia y cada historia tiene personas detrás.',message:'CADA DATO TIENE UNA HISTORIA',action:'human'},
-{id:9,title:'DE EVIDENCIA A OPORTUNIDADES',sub:'Expedientes Digitales · Expedientes Ambientales · Créditos de Carbono tCO₂e · Bonos de Carbono / Azules',message:'DEL TERRITORIO HACIA NUEVAS OPORTUNIDADES',action:'world'},
-{id:10,title:'LA SIGUIENTE ETAPA',sub:'Cada agricultor, familia y organización que se suma abre nuevas oportunidades.',message:'QUE NADIE PERMANEZCA INVISIBLE POR NO PODER DEMOSTRAR EL VALOR DE LO QUE HACE',action:'future'},
-{id:11,title:'CADA HISTORIA TIENE UN VALOR',sub:'Podemos hacerlo visible, llevarlo al mundo y transformarlo en nuevas oportunidades.',message:'DELTAX AYUDA AL MUNDO A DESCUBRIRLO',action:'final'}];
+{id:1,title:'',sub:'',message:'',action:'discover'},
+{id:2,title:'',sub:'',message:'',action:'bridge'},
+{id:3,title:'',sub:'',message:'',action:'connect'},
+{id:4,title:'',sub:'',message:'',action:'market'},
+{id:5,title:'',sub:'',message:'',action:'expand'},
+{id:6,title:'',sub:'',message:'',action:'pulse'},
+{id:7,title:'',sub:'',message:'',action:'final'}];
 window.DX_TRACK={targets:DX_SCENES.map(s=>({scene:s.id,src:`../assets/markers/lamina${String(s.id).padStart(2,'0')}.jpg`})),maxFeatures:1400,matchDistance:45,minGood:22,minLead:6,confirm:3,interval:360};
