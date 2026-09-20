@@ -26,3 +26,18 @@ body.scene-one #visual{display:none!important}
 #farmerAR{background:transparent!important;overflow:visible!important;filter:none!important;animation:none!important;pointer-events:none}
 #farmerAR #farmerCanvas{position:absolute;inset:0;width:100%;height:100%;background:transparent!important;object-fit:contain;transform:none!important}
 #farmerAR #farmerSequence{display:none!important}
+
+/* v23 approved 6-pose farmer cycle. Printed farmer remains the exact start/end frame. */
+#farmerAR:not([hidden]){
+  animation:farmerApprovedCycle 5.6s ease-in-out infinite!important;
+  transform-origin:50% 72%;
+}
+@keyframes farmerApprovedCycle{
+  0%,7%{opacity:0;transform:rotate(var(--farmer-angle,0deg)) translateY(0) scale(1)}
+  13%{opacity:.45;transform:rotate(var(--farmer-angle,0deg)) translateY(-1px) scale(1.01)}
+  22%{opacity:1;transform:rotate(var(--farmer-angle,0deg)) translateY(-2px) scale(1.025)}
+  50%{opacity:1;transform:rotate(var(--farmer-angle,0deg)) translateY(-7px) scale(1.07)}
+  72%{opacity:1;transform:rotate(var(--farmer-angle,0deg)) translateY(-3px) scale(1.035)}
+  88%{opacity:.45;transform:rotate(var(--farmer-angle,0deg)) translateY(-1px) scale(1.01)}
+  94%,100%{opacity:0;transform:rotate(var(--farmer-angle,0deg)) translateY(0) scale(1)}
+}
