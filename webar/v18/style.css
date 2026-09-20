@@ -41,3 +41,7 @@ body.scene-one #visual{display:none!important}
   88%{opacity:.45;transform:rotate(var(--farmer-angle,0deg)) translateY(-1px) scale(1.01)}
   94%,100%{opacity:0;transform:rotate(var(--farmer-angle,0deg)) translateY(0) scale(1)}
 }
+
+/* v24 final farmer renderer: use the verified transparent animated WebP directly */
+#farmerAR #farmerCanvas{display:none!important}
+#farmerAR #farmerSequence{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important;background:transparent!important;mix-blend-mode:normal!important;filter:none!important}
