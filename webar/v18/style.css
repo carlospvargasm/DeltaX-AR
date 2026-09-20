@@ -20,3 +20,9 @@ body.scene-one #visual{display:none!important}
 /* v20: integrate sequence over printed farmer */
 #farmerAR{filter:none!important;overflow:visible!important}
 #farmerAR #farmerSequence{object-fit:contain!important;mix-blend-mode:screen;image-rendering:auto;filter:none!important}
+
+/* v22 farmer overlay: canvas only, no rectangle/background */
+#story{display:none!important}
+#farmerAR{background:transparent!important;overflow:visible!important;filter:none!important;animation:none!important;pointer-events:none}
+#farmerAR #farmerCanvas{position:absolute;inset:0;width:100%;height:100%;background:transparent!important;object-fit:contain;transform:none!important}
+#farmerAR #farmerSequence{display:none!important}
