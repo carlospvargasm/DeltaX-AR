@@ -3,3 +3,6 @@
 #farmerAR[hidden]{display:none!important}
 @keyframes farmerLive{0%,12%,100%{transform:translate3d(0,0,0) scale(1) rotate(0)}38%,68%{transform:translate3d(-2.2%,-1.8%,38px) scale(1.055) rotate(-1.2deg)}}
 body.selfie-mode #farmerAR{display:none!important}
+
+body.scene-one #story{display:none!important}
+body.scene-one #visual{display:none!important}
