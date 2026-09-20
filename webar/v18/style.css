@@ -11,3 +11,8 @@ body.selfie-mode #farmerAR{display:none!important}
 
 body.scene-one #story{display:none!important}
 body.scene-one #visual{display:none!important}
+
+/* v19: approved six-frame farmer sequence */
+#farmerAR{animation:none!important;filter:drop-shadow(0 10px 12px rgba(0,0,0,.18));overflow:visible}
+#farmerAR #farmerSequence{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;animation:none!important;transform:none!important}
+#farmerBody,#farmerHead{display:none!important}
