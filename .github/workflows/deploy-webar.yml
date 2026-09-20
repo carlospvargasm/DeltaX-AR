@@ -30,6 +30,7 @@ jobs:
           curl -L --fail --retry 3 'https://docs.google.com/presentation/d/1wSAV1BE4EbC_RyGE6moLpifcwYWHIIRdF1ep_AXohdo/export/pdf' -o /tmp/pitch.pdf
           pdftoppm -f 1 -l 7 -jpeg -jpegopt quality=70 -scale-to-x 1000 -scale-to-y -1 /tmp/pitch.pdf /tmp/slides/lamina
           n=1; for f in /tmp/slides/lamina-*.jpg; do printf -v p 'webar/assets/markers/lamina%02d.jpg' "$n"; cp "$f" "$p"; n=$((n+1)); done
+          python3 webar/v18/build_farmer_asset.py
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload WebAR
