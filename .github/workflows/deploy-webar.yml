@@ -24,7 +24,7 @@ jobs:
       - name: Build recognition markers from current pitch
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y poppler-utils
+          sudo apt-get install -y poppler-utils\n          python -m pip install --quiet opencv-python-headless
           mkdir -p webar/assets/markers /tmp/slides
           rm -f webar/assets/markers/lamina*.jpg
           curl -L --fail --retry 3 'https://docs.google.com/presentation/d/1wSAV1BE4EbC_RyGE6moLpifcwYWHIIRdF1ep_AXohdo/export/pdf' -o /tmp/pitch.pdf
