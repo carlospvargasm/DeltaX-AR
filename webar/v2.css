@@ -141,3 +141,20 @@
 @keyframes p17Up{0%,16%{bottom:-18%;transform:rotate(-28deg)}84%,100%{bottom:110%;transform:rotate(-28deg)}}
 @keyframes p17Down{0%,16%{top:-18%;transform:scaleX(-1) rotate(-28deg)}84%,100%{top:110%;transform:scaleX(-1) rotate(-28deg)}}
 @keyframes p17Roadrunner{0%,58%{left:-24%;bottom:7%;transform:scaleX(1) rotate(-9deg)}64%{left:18%;bottom:10%;transform:scaleX(1) rotate(-5deg)}72%{left:108%;bottom:14%;transform:scaleX(1) rotate(-2deg)}100%{left:108%;bottom:14%;transform:scaleX(1) rotate(-2deg)}}
+
+/* Panama 18 — visibility fix: legacy .bird animation was overriding positioned flock */
+.bird.bird-main{display:block!important;z-index:15!important;opacity:1!important;top:12%!important;left:82%!important;width:min(24vw,115px)!important;animation:birdIdle 3.4s ease-in-out infinite!important}
+.bird.bird-fly,.bird.bird-runner{display:block!important;z-index:15!important;opacity:1!important;visibility:visible!important}
+.bird.bird-a{top:16%!important;left:-24%!important;right:auto!important;width:min(18vw,86px)!important;animation:p18LR 9s linear infinite!important}
+.bird.bird-b{top:25%!important;right:-24%!important;left:auto!important;width:min(17vw,82px)!important;animation:p18RL 10.5s linear 1.5s infinite!important}
+.bird.bird-c{top:auto!important;bottom:18%!important;left:-24%!important;right:auto!important;width:min(17vw,82px)!important;animation:p18LRB 12s linear 3.5s infinite!important}
+.bird.bird-d{top:auto!important;bottom:-18%!important;left:2%!important;right:auto!important;width:min(16vw,76px)!important;animation:p18Up 11s linear 2s infinite!important}
+.bird.bird-e{top:-18%!important;bottom:auto!important;right:2%!important;left:auto!important;width:min(16vw,76px)!important;animation:p18Down 12.5s linear 4.5s infinite!important}
+.bird.bird-runner:not(.bird-runner-reverse){top:auto!important;bottom:8%!important;left:-24%!important;right:auto!important;width:min(16vw,78px)!important;animation:p18Runner 6.5s linear 1s infinite!important}
+.bird.bird-runner-reverse{display:none!important}
+@keyframes p18LR{0%,8%{left:-24%;transform:scaleX(1)}92%,100%{left:110%;transform:scaleX(1)}}
+@keyframes p18RL{0%,8%{right:-24%;transform:scaleX(-1)}92%,100%{right:110%;transform:scaleX(-1)}}
+@keyframes p18LRB{0%,12%{left:-24%;transform:scaleX(1)}90%,100%{left:110%;transform:scaleX(1)}}
+@keyframes p18Up{0%,10%{bottom:-18%;transform:rotate(-28deg)}90%,100%{bottom:110%;transform:rotate(-28deg)}}
+@keyframes p18Down{0%,10%{top:-18%;transform:scaleX(-1) rotate(-28deg)}90%,100%{top:110%;transform:scaleX(-1) rotate(-28deg)}}
+@keyframes p18Runner{0%,48%{left:-24%;bottom:8%;transform:scaleX(1) rotate(-8deg)}60%{left:22%;bottom:11%;transform:scaleX(1) rotate(-4deg)}72%,100%{left:110%;bottom:14%;transform:scaleX(1) rotate(-2deg)}}
