@@ -13,21 +13,24 @@ cameraBtn.onclick=async()=>{facing=facing==='environment'?'user':'environment';a
 let shutterAudio=null;
 async function clickSound(){
   try{
-    const A=window.AudioContext||window.webkitAudioContext;
-    if(!A)return;
-    shutterAudio=shutterAudio||new A();
-    if(shutterAudio.state==='suspended')await shutterAudio.resume();
-    const t=shutterAudio.currentTime;
-    const buffer=shutterAudio.createBuffer(1,Math.floor(shutterAudio.sampleRate*.075),shutterAudio.sampleRate);
-    const data=buffer.getChannelData(0);
-    for(let i=0;i<data.length;i++){
-      const x=i/data.length;
-      data[i]=(Math.random()*2-1)*Math.exp(-x*13)*(i<180?1:.32);
-    }
-    const src=shutterAudio.createBufferSource(),filter=shutterAudio.createBiquadFilter(),gain=shutterAudio.createGain();
-    filter.type='bandpass';filter.frequency.value=2400;filter.Q.value=.7;
-    gain.gain.setValueAtTime(.38,t);gain.gain.exponentialRampToValueAtTime(.001,t+.075);
-    src.buffer=buffer;src.connect(filter);filter.connect(gain);gain.connect(shutterAudio.destination);src.start(t);
+    const A=window.AudioContext||window.webkitAudioContext;if(!A)return;
+    shutterAudio=shutterAudio||new A();if(shutterAudio.state==='suspended')await shutterAudio.resume();
+    const ctx=shutterAudio,t=ctx.currentTime;
+    const snap=(at,dur,freq,vol)=>{
+      const n=ctx.createBuffer(1,Math.floor(ctx.sampleRate*dur),ctx.sampleRate),d=n.getChannelData(0);
+      for(let i=0;i<d.length;i++){const x=i/d.length;d[i]=(Math.random()*2-1)*Math.exp(-x*18);}
+      const s=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();
+      f.type='bandpass';f.frequency.value=freq;f.Q.value=.8;
+      g.gain.setValueAtTime(vol,at);g.gain.exponentialRampToValueAtTime(.001,at+dur);
+      s.buffer=n;s.connect(f);f.connect(g);g.connect(ctx.destination);s.start(at);
+    };
+    // Mechanical focal-plane shutter: opening curtain, tiny mechanism gap, closing curtain.
+    snap(t,.038,1550,.48);
+    snap(t+.052,.047,1050,.58);
+    const o=ctx.createOscillator(),g=ctx.createGain();
+    o.type='triangle';o.frequency.setValueAtTime(185,t+.048);o.frequency.exponentialRampToValueAtTime(95,t+.105);
+    g.gain.setValueAtTime(.045,t+.048);g.gain.exponentialRampToValueAtTime(.001,t+.12);
+    o.connect(g);g.connect(ctx.destination);o.start(t+.048);o.stop(t+.125);
   }catch(e){}
 }
 function frame(){const d=Math.min(2,devicePixelRatio||1),W=Math.round(innerWidth*d),H=Math.round(innerHeight*d);capture.width=W;capture.height=H;const c=capture.getContext('2d'),vw=video.videoWidth||1280,vh=video.videoHeight||720,k=Math.max(W/vw,H/vh),sw=W/k,sh=H/k;c.save();if(facing==='user'){c.translate(W,0);c.scale(-1,1)}c.drawImage(video,(vw-sw)/2,(vh-sh)/2,sw,sh,0,0,W,H);c.restore();c.save();c.scale(d,d);c.fillStyle='rgba(0,0,0,.18)';c.beginPath();c.arc(38,38,27,0,Math.PI*2);c.fill();c.fillStyle='#fff';c.font='900 30px Arial';c.textAlign='center';c.textBaseline='middle';c.fillText('ΔX',38,39);document.querySelectorAll('.bird').forEach(el=>{const im=el.querySelector('img'),r=el.getBoundingClientRect();if(im&&im.complete&&im.naturalWidth&&r.right>0&&r.left<innerWidth&&r.bottom>0&&r.top<innerHeight)c.drawImage(im,r.left,r.top,r.width,r.height)});c.restore()}
