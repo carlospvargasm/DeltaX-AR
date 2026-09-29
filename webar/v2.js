@@ -1,5 +1,5 @@
 const $=s=>document.querySelector(s);
-const app=$('#app'),video=$('#camera'),start=$('#start'),cameraBtn=$('#selfie'),record=$('#record'),capture=$('#captureCanvas'),notice=$('#captureNotice'),statusEl=$('#status'),instruction=$('#instruction');
+const app=$('#app'),video=$('#camera'),start=$('#start'),cameraBtn=$('#selfie'),shutterBtn=$('#shutter'),record=$('#record'),capture=$('#captureCanvas'),notice=$('#captureNotice'),statusEl=$('#status'),instruction=$('#instruction');
 let stream=null,facing='environment',recorder=null,chunks=[],raf=0;
 
 function msg(t){notice.textContent=t;notice.classList.remove('hidden');setTimeout(()=>notice.classList.add('hidden'),1800)}
@@ -21,7 +21,7 @@ function frame(){
 async function share(blob,name){const file=new File([blob],name,{type:blob.type});if(navigator.share&&navigator.canShare?.({files:[file]})){try{await navigator.share({files:[file],title:'DeltaX Panamá'});return}catch(e){if(e.name==='AbortError')return}}const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),3000)}
 
 async function takePhoto(){if(!stream){msg('ACTIVA LA CÁMARA');return}shutter();frame();capture.toBlob(async b=>{if(b){msg('FOTO LISTA');await share(b,'DeltaX-Panama-'+Date.now()+'.jpg')}},'image/jpeg',.92)}
-video.onclick=takePhoto;
+shutterBtn.onclick=takePhoto;
 
 record.onclick=()=>{if(!stream){msg('ACTIVA LA CÁMARA');return}if(recorder?.state==='recording'){recorder.stop();return}if(!window.MediaRecorder||!capture.captureStream){msg('VIDEO NO COMPATIBLE');return}
  chunks=[];const out=capture.captureStream(30),types=['video/mp4;codecs=avc1.42E01E','video/mp4','video/webm;codecs=vp8','video/webm'],mime=types.find(t=>MediaRecorder.isTypeSupported(t))||'';
