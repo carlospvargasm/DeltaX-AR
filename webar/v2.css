@@ -57,3 +57,8 @@
 .dx-mini{font:900 20px Arial;color:#f4d44d;line-height:1}
 .media #record.recording .video-icon{border-color:#fff}
 @media(max-width:380px){.media{gap:12px}.media .tool-button{width:58px;height:58px}}
+
+/* Panama 12: elapsed recording counter */
+.record-timer{display:none;position:absolute;top:-22px;left:50%;transform:translateX(-50%);font:800 11px Arial;color:#fff;background:rgba(181,45,38,.92);padding:3px 7px;border-radius:9px;font-style:normal;letter-spacing:.5px;white-space:nowrap}
+.record-timer.show{display:block}
+#record{position:relative}
