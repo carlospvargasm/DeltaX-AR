@@ -25,7 +25,16 @@ function captureFrame(){
  c.save();
  if(facing==='user'){c.translate(W,0);c.scale(-1,1)}
  c.drawImage(video,(vw-sw)/2,(vh-sh)/2,sw,sh,0,0,W,H);c.restore();
- c.save();c.scale(dpr,dpr);c.fillStyle='rgba(0,0,0,.42)';c.fillRect(0,0,innerWidth,82);c.fillStyle='#fff';c.font='900 28px Arial';c.fillText('ΔX DELTAX',18,36);c.fillStyle='#f4d44d';c.font='900 11px Arial';c.fillText('Descubre el valor invisible',18,56);c.restore();
+ c.save();c.scale(dpr,dpr);
+ // Selfie final: solo icono DeltaX + mascota, sin textos ni datos de slides.
+ c.fillStyle='rgba(0,0,0,.18)';c.beginPath();c.arc(38,38,27,0,Math.PI*2);c.fill();
+ c.fillStyle='#fff';c.font='900 30px Arial';c.textAlign='center';c.textBaseline='middle';c.fillText('ΔX',38,39);
+ const birdImg=document.querySelector('#bird img');
+ if(birdImg&&birdImg.complete&&birdImg.naturalWidth){
+   const bw=Math.min(innerWidth*.38,180),ratio=birdImg.naturalHeight/birdImg.naturalWidth,bh=bw*ratio;
+   c.drawImage(birdImg,innerWidth-bw-12,16,bw,bh);
+ }
+ c.restore();
 }
 photo.onclick=()=>{if(!stream){msg('ACTIVA LA CÁMARA');return}captureFrame();capture.toBlob(blob=>{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='DeltaX-Panama-'+Date.now()+'.jpg';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);msg('FOTO GUARDADA')},'image/jpeg',.94)};
 record.onclick=()=>{if(!stream){msg('ACTIVA LA CÁMARA');return}if(recorder&&recorder.state==='recording'){recorder.stop();return}if(!window.MediaRecorder||!capture.captureStream){msg('VIDEO NO COMPATIBLE');return}chunks=[];const out=capture.captureStream(30);recorder=new MediaRecorder(out);recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};recorder.onstop=()=>{cancelAnimationFrame(raf);const blob=new Blob(chunks,{type:recorder.mimeType||'video/webm'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='DeltaX-Panama-'+Date.now()+'.webm';a.click();record.classList.remove('recording');record.querySelector('b').textContent='Video';msg('VIDEO GUARDADO')};const draw=()=>{captureFrame();raf=requestAnimationFrame(draw)};draw();recorder.start(500);record.classList.add('recording');record.querySelector('b').textContent='Detener';msg('GRABANDO')};
