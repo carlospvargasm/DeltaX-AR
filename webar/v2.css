@@ -20,3 +20,8 @@
 @keyframes flyUp{0%,18%{bottom:-22%;left:13%;transform:rotate(-35deg)}48%{bottom:42%;left:3%;transform:rotate(-18deg)}72%{bottom:76%;left:28%;transform:rotate(8deg)}88%,100%{bottom:112%;left:46%;transform:rotate(18deg)}}
 @keyframes flyDown{0%,22%{top:-22%;right:12%;transform:rotate(150deg)}50%{top:31%;right:3%;transform:rotate(132deg)}75%{top:73%;right:26%;transform:rotate(118deg)}90%,100%{top:112%;right:48%;transform:rotate(110deg)}}
 @keyframes runnerReverse{0%,58%{right:-25%;transform:scaleX(-1) rotate(-5deg)}66%{right:28%;transform:scaleX(-1) rotate(5deg)}74%{right:112%;transform:scaleX(-1) rotate(-3deg)}100%{right:112%}}
+
+/* Panama 6: DeltaX icon visible in live camera/selfie and matched to capture */
+.dx-selfie-icon{display:none;position:absolute;z-index:12;top:max(14px,env(safe-area-inset-top));left:14px;width:56px;height:56px;border-radius:50%;align-items:center;justify-content:center;background:rgba(0,0,0,.18);color:#fff;font-size:30px;font-weight:900;line-height:1;text-shadow:0 2px 6px #0008;pointer-events:none}
+#app[data-state="camera"] .dx-selfie-icon{display:flex}
+#app.selfie-mode .dx-selfie-icon{display:flex}
