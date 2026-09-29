@@ -25,3 +25,20 @@
 .dx-selfie-icon{display:none;position:absolute;z-index:12;top:max(14px,env(safe-area-inset-top));left:14px;width:56px;height:56px;border-radius:50%;align-items:center;justify-content:center;background:rgba(0,0,0,.18);color:#fff;font-size:30px;font-weight:900;line-height:1;text-shadow:0 2px 6px #0008;pointer-events:none}
 #app[data-state="camera"] .dx-selfie-icon{display:flex}
 #app.selfie-mode .dx-selfie-icon{display:flex}
+
+/* Panama 8: strict face-safe flight corridors. No bird crosses central portrait zone. */
+.bird-main{top:12%;left:82%;width:min(24vw,115px)}
+.bird-a{top:18%;width:min(18vw,86px);animation:flyTopLR 9s linear infinite}
+.bird-b{top:27%;width:min(16vw,78px);animation:flyTopRL 11s linear 2s infinite}
+.bird-c{top:auto;bottom:18%;width:min(16vw,78px);animation:flyBottomLR 13s linear 5s infinite}
+.bird-d{left:1%;bottom:-20%;width:min(15vw,72px);animation:flyLeftEdgeUp 10s linear 1s infinite}
+.bird-e{right:1%;top:-20%;width:min(15vw,72px);animation:flyRightEdgeDown 12s linear 4s infinite}
+.bird-runner{top:auto;bottom:7%;width:min(14vw,68px);animation:runnerBottom 7s linear 3s infinite}
+.bird-runner-reverse{top:9%;bottom:auto;width:min(14vw,68px);animation:runnerTopReverse 8s linear 1s infinite}
+@keyframes flyTopLR{0%,15%{left:-25%}45%{left:18%}70%{left:72%}85%,100%{left:112%}}
+@keyframes flyTopRL{0%,18%{right:-25%}50%{right:72%}82%,100%{right:112%}}
+@keyframes flyBottomLR{0%,25%{left:-25%}55%{left:8%}78%{left:78%}90%,100%{left:112%}}
+@keyframes flyLeftEdgeUp{0%,18%{bottom:-20%;left:1%}55%{bottom:45%;left:1%}88%,100%{bottom:112%;left:1%}}
+@keyframes flyRightEdgeDown{0%,22%{top:-20%;right:1%}55%{top:48%;right:1%}90%,100%{top:112%;right:1%}}
+@keyframes runnerBottom{0%,55%{left:-25%}64%{left:22%}72%{left:112%}100%{left:112%}}
+@keyframes runnerTopReverse{0%,58%{right:-25%}66%{right:28%}74%{right:112%}100%{right:112%}}
