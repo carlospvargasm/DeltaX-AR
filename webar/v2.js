@@ -10,11 +10,11 @@ async function openCamera(){
     stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:facing},width:{ideal:1280},height:{ideal:720}},audio:false});
     video.srcObject=stream;await video.play();
     app.classList.toggle('selfie-mode',facing==='user');
-    selfie.querySelector('b').textContent=facing==='user'?'Trasera':'Selfie';
+    selfie.querySelector('b').textContent=facing==='user'?'Trasera':'Frontal';
     state('camera');statusEl.textContent=facing==='user'?'Selfie activa':'Cámara trasera activa';
   }catch(e){statusEl.textContent='No se pudo abrir la cámara';msg('REVISA EL PERMISO DE CÁMARA')}
 }
-function cameraOff(){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;video.srcObject=null;app.classList.remove('selfie-mode');facing='environment';selfie.querySelector('b').textContent='Selfie';state('welcome');statusEl.textContent='Cámara desactivada'}
+function cameraOff(){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;video.srcObject=null;app.classList.remove('selfie-mode');facing='environment';selfie.querySelector('b').textContent='Frontal';state('welcome');statusEl.textContent='Cámara desactivada'}
 start.disabled=false;
 start.onclick=()=>stream?cameraOff():openCamera();
 function shutterClick(){try{const A=window.AudioContext||window.webkitAudioContext,a=new A(),o=a.createOscillator(),g=a.createGain();o.type='square';o.frequency.setValueAtTime(120,a.currentTime);g.gain.setValueAtTime(.16,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.07);o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+.07)}catch(e){}}
@@ -56,7 +56,7 @@ async function openCamera(){
     stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:facing},width:{ideal:1280},height:{ideal:720}},audio:false});
     video.srcObject=stream;await video.play();
     app.classList.toggle('selfie-mode',facing==='user');
-    selfie.querySelector('b').textContent=facing==='user'?'Trasera':'Selfie';
+    selfie.querySelector('b').textContent=facing==='user'?'Trasera':'Frontal';
     state('camera');statusEl.textContent=facing==='user'?'Selfie activa':'Cámara trasera activa';
   }catch(e){statusEl.textContent='No se pudo abrir la cámara';msg('REVISA EL PERMISO DE CÁMARA')}
 }
