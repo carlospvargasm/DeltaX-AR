@@ -4,51 +4,43 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07180f">
-<title>DeltaX AR Panamá</title>
-<link rel="stylesheet" href="v2.css?v=panama19">
+<title>DeltaX Panamá</title>
+<link rel="stylesheet" href="v2.css?v=panama20">
 </head>
 <body>
 <main id="app" data-state="welcome">
   <video id="camera" autoplay playsinline muted></video>
-  <canvas id="scan" width="640" height="360"></canvas>
-  <canvas id="captureCanvas" class="hidden"></canvas>
+  <canvas id="captureCanvas"></canvas>
   <div class="shade"></div>
-  <div id="dxSelfieIcon" class="dx-selfie-icon" aria-hidden="true">ΔX</div>
-  <header class="brand"><div class="mark">ΔX</div><div class="word">DELTAX</div><div class="tagline">Descubre el valor invisible</div></header>
-  <div id="bird" class="bird bird-main"><img src="assets/torogoz-deltax.webp?v=18" alt="Torogoz DeltaX"></div>
-  <div class="bird bird-fly bird-a"><img src="assets/torogoz-deltax.webp?v=18" alt=""></div>
-  <div class="bird bird-fly bird-b"><img src="assets/torogoz-deltax.webp?v=18" alt=""></div>
-  <div class="bird bird-fly bird-c"><img src="assets/torogoz-deltax.webp?v=18" alt=""></div>
-  <div class="bird bird-runner"><img src="assets/torogoz-deltax.webp?v=18" alt=""></div>
-  <div class="bird bird-fly bird-d"><img src="assets/torogoz-deltax.webp?v=18" alt=""></div>
-  <div class="bird bird-fly bird-e"><img src="assets/torogoz-deltax.webp?v=18" alt=""></div>
-  <div class="bird bird-runner bird-runner-reverse"><img src="assets/torogoz-deltax.webp?v=18" alt=""></div>
-  
-  <section id="viewport" class="viewport">
-    <div id="welcomeVisual" class="welcome-visual"><div class="mountains"></div><div class="fields"></div><div class="orbit"></div><div class="visual-mark">ΔX</div><div class="visual-word">DELTAX</div><div class="visual-copy">Descubre el valor invisible</div></div>
-    
-  </section>
+  <div class="dx-live">ΔX</div>
+
+  <header class="brand">
+    <div class="mark">ΔX</div><div class="word">DELTAX</div>
+    <div class="tagline">Descubre el valor invisible</div>
+  </header>
+
+  <div class="bird bird-static"><img src="assets/torogoz-deltax.webp?v=20" alt="Torogoz DeltaX"></div>
+  <div class="bird bird-lr"><img src="assets/torogoz-deltax.webp?v=20" alt=""></div>
+  <div class="bird bird-rl"><img src="assets/torogoz-deltax.webp?v=20" alt=""></div>
+  <div class="bird bird-low"><img src="assets/torogoz-deltax.webp?v=20" alt=""></div>
+  <div class="bird bird-up"><img src="assets/torogoz-deltax.webp?v=20" alt=""></div>
+  <div class="bird bird-down"><img src="assets/torogoz-deltax.webp?v=20" alt=""></div>
+  <div class="bird bird-runner"><img src="assets/torogoz-deltax.webp?v=20" alt=""></div>
+
+  <div id="welcome" class="welcome"><div class="welcome-logo">ΔX</div><strong>DELTAX</strong><span>Descubre el valor invisible</span></div>
   <div id="instruction" class="instruction">Activa la cámara para comenzar</div>
-  <section class="actions">
-    <button id="start" class="primary" disabled><span>▣</span><b id="cameraLabel">ACTIVAR CÁMARA</b></button>
-    
+  <button id="start" class="start">ACTIVAR CÁMARA</button>
+
+  <section id="media" class="media">
+    <button id="cameraSwitch" class="round secondary" aria-label="Cambiar cámara">
+      <svg viewBox="0 0 32 32"><path d="M7 11a11 11 0 0 1 18-2M24 4l2 5-5 1M25 21a11 11 0 0 1-18 2M8 28l-2-5 5-1"/></svg>
+      <b>Frontal</b>
+    </button>
+    <button id="shutter" class="shutter" aria-label="Tomar selfie"><i></i><b>SELFIE</b></button>
+    <button id="record" class="round secondary record" aria-label="Grabar video"><i></i><b>REC</b><em id="recordTimer">00:00</em></button>
   </section>
-  <section id="media" class="media camera-controls">
-    <div class="control-row control-row-main">
-      <button id="selfie" class="camera-action switch-action" aria-label="Cambiar cámara">
-        <span class="switch-svg" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 11a11 11 0 0 1 18-2"/><path d="M24 4l2 5-5 1"/><path d="M25 21a11 11 0 0 1-18 2"/><path d="M8 28l-2-5 5-1"/></svg></span><b>Frontal</b>
-      </button>
-      <button id="shutter" class="shutter-action" aria-label="Tomar selfie"><span class="shutter-ring"><i></i></span><b>SELFIE</b></button>
-      <button id="record" class="camera-action record-action" aria-label="Grabar video">
-        <span class="record-symbol" aria-hidden="true"></span><b>REC</b><em id="recordTimer" class="record-timer">00:00</em>
-      </button>
-    </div>
-    <div class="control-row control-row-secondary">
-      <a id="website" class="secondary-action" href="https://deltax.space" target="_blank" rel="noopener" aria-label="Abrir DeltaX"><span class="dx-control">ΔX</span><b>DeltaX</b></a>
-    </div>
-  </section>
-  <footer>◆ <span>Naturaleza que genera valor</span></footer>
-  <div id="status">Panamá · cámara lista</div><div id="picker" class="picker hidden"></div><div id="captureNotice" class="notice hidden"></div>
+  <a class="website" href="https://deltax.space" target="_blank" rel="noopener"><strong>ΔX</strong> DeltaX</a>
+  <div id="notice" class="notice"></div>
 </main>
-<script src="v2.js?v=panama19"></script>
+<script src="v2.js?v=panama20"></script>
 </body></html>
