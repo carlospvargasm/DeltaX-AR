@@ -125,3 +125,19 @@
 @keyframes birdUp{0%,15%{bottom:-18%;left:1%}85%,100%{bottom:110%;left:1%}}
 @keyframes birdDown{0%,15%{top:-18%;right:1%}85%,100%{top:110%;right:1%}}
 @keyframes roadRunnerLR{0%,58%{left:-22%;transform:translateY(0) rotate(-4deg)}64%{left:20%;transform:translateY(2px) rotate(3deg)}71%{left:108%;transform:translateY(0) rotate(-2deg)}100%{left:108%}}
+
+/* Panama 17 — rebuilt directional flock.
+   Horizontal birds face their travel direction; Roadrunner flies forward only. */
+.bird-a{top:16%!important;left:-24%!important;right:auto!important;transform:scaleX(1)!important;animation:p17LR 9s linear 0s infinite!important}
+.bird-b{top:25%!important;right:-24%!important;left:auto!important;transform:scaleX(-1)!important;animation:p17RL 10.5s linear 1.7s infinite!important}
+.bird-c{top:auto!important;bottom:18%!important;left:-24%!important;right:auto!important;transform:scaleX(1)!important;animation:p17LRBottom 12s linear 4s infinite!important}
+.bird-d{left:2%!important;right:auto!important;top:auto!important;bottom:-18%!important;transform:rotate(-28deg)!important;animation:p17Up 11s linear 2.4s infinite!important}
+.bird-e{right:2%!important;left:auto!important;top:-18%!important;bottom:auto!important;transform:scaleX(-1) rotate(-28deg)!important;animation:p17Down 12.5s linear 5s infinite!important}
+.bird-runner{display:block!important;top:auto!important;bottom:7%!important;left:-24%!important;right:auto!important;transform:scaleX(1) rotate(-7deg)!important;animation:p17Roadrunner 6.5s linear 2s infinite!important}
+.bird-runner-reverse{display:none!important}
+@keyframes p17LR{0%,14%{left:-24%;transform:scaleX(1) translateY(0)}48%{left:38%;transform:scaleX(1) translateY(-7px)}86%,100%{left:110%;transform:scaleX(1) translateY(3px)}}
+@keyframes p17RL{0%,14%{right:-24%;transform:scaleX(-1) translateY(0)}48%{right:38%;transform:scaleX(-1) translateY(-6px)}86%,100%{right:110%;transform:scaleX(-1) translateY(4px)}}
+@keyframes p17LRBottom{0%,20%{left:-24%;transform:scaleX(1) translateY(0)}54%{left:36%;transform:scaleX(1) translateY(5px)}88%,100%{left:110%;transform:scaleX(1) translateY(-4px)}}
+@keyframes p17Up{0%,16%{bottom:-18%;transform:rotate(-28deg)}84%,100%{bottom:110%;transform:rotate(-28deg)}}
+@keyframes p17Down{0%,16%{top:-18%;transform:scaleX(-1) rotate(-28deg)}84%,100%{top:110%;transform:scaleX(-1) rotate(-28deg)}}
+@keyframes p17Roadrunner{0%,58%{left:-24%;bottom:7%;transform:scaleX(1) rotate(-9deg)}64%{left:18%;bottom:10%;transform:scaleX(1) rotate(-5deg)}72%{left:108%;bottom:14%;transform:scaleX(1) rotate(-2deg)}100%{left:108%;bottom:14%;transform:scaleX(1) rotate(-2deg)}}
