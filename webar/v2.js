@@ -29,11 +29,16 @@ function captureFrame(){
  // Selfie final: solo icono DeltaX + mascota, sin textos ni datos de slides.
  c.fillStyle='rgba(0,0,0,.18)';c.beginPath();c.arc(38,38,27,0,Math.PI*2);c.fill();
  c.fillStyle='#fff';c.font='900 30px Arial';c.textAlign='center';c.textBaseline='middle';c.fillText('ΔX',38,39);
- const birdImg=document.querySelector('#bird img');
- if(birdImg&&birdImg.complete&&birdImg.naturalWidth){
-   const bw=Math.min(innerWidth*.38,180),ratio=birdImg.naturalHeight/birdImg.naturalWidth,bh=bw*ratio;
-   c.drawImage(birdImg,innerWidth-bw-12,16,bw,bh);
- }
+ const birds=[...document.querySelectorAll('.bird')];
+ birds.forEach(el=>{
+   const img=el.querySelector('img');if(!img||!img.complete||!img.naturalWidth)return;
+   const r=el.getBoundingClientRect();if(r.right<0||r.left>innerWidth||r.bottom<0||r.top>innerHeight)return;
+   c.save();
+   const flipped=getComputedStyle(el).transform!=='none' && el.classList.contains('bird-b');
+   if(flipped){c.translate(r.left+r.width,r.top);c.scale(-1,1);c.drawImage(img,0,0,r.width,r.height)}
+   else c.drawImage(img,r.left,r.top,r.width,r.height);
+   c.restore();
+ });
  c.restore();
 }
 photo.onclick=()=>{if(!stream){msg('ACTIVA LA CÁMARA');return}captureFrame();capture.toBlob(blob=>{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='DeltaX-Panama-'+Date.now()+'.jpg';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);msg('FOTO GUARDADA')},'image/jpeg',.94)};
