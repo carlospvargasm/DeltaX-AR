@@ -42,3 +42,18 @@
 @keyframes flyRightEdgeDown{0%,22%{top:-20%;right:1%}55%{top:48%;right:1%}90%,100%{top:112%;right:1%}}
 @keyframes runnerBottom{0%,55%{left:-25%}64%{left:22%}72%{left:112%}100%{left:112%}}
 @keyframes runnerTopReverse{0%,58%{right:-25%}66%{right:28%}74%{right:112%}100%{right:112%}}
+
+/* Panama 11: clean event controls — no emoji glyphs */
+.media{gap:18px;align-items:center}
+.media .tool-button{width:62px;height:62px;border:1px solid rgba(255,255,255,.65);background:rgba(4,18,12,.78);backdrop-filter:blur(8px);box-shadow:0 5px 18px rgba(0,0,0,.28)}
+.media .tool-button b{font-size:8px;letter-spacing:.2px;font-weight:700;color:#fff}
+.camera-switch-icon{width:23px;height:16px;border:2px solid #fff;border-radius:4px;position:relative;display:block}
+.camera-switch-icon:before{content:'';position:absolute;width:7px;height:7px;border:2px solid #fff;border-radius:50%;left:6px;top:2px}
+.camera-switch-icon:after{content:'↻';position:absolute;color:#f4d44d;font:700 13px Arial;right:-10px;top:-11px}
+.shutter-button{border:2px solid #f4d44d!important}
+.shutter-icon{display:block;width:25px;height:25px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.2)}
+.video-icon{width:24px;height:16px;border:2px solid #fff;border-radius:4px;position:relative;display:block}
+.video-icon:after{content:'';position:absolute;right:-9px;top:2px;border-left:7px solid #fff;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.dx-mini{font:900 20px Arial;color:#f4d44d;line-height:1}
+.media #record.recording .video-icon{border-color:#fff}
+@media(max-width:380px){.media{gap:12px}.media .tool-button{width:58px;height:58px}}
