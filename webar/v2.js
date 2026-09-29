@@ -1,6 +1,6 @@
 const $=s=>document.querySelector(s);
-const app=$('#app'),video=$('#camera'),start=$('#start'),cameraBtn=$('#selfie'),shutterBtn=$('#shutter'),record=$('#record'),capture=$('#captureCanvas'),notice=$('#captureNotice'),statusEl=$('#status'),instruction=$('#instruction');
-let stream=null,facing='environment',recorder=null,chunks=[],raf=0;
+const app=$('#app'),video=$('#camera'),start=$('#start'),cameraBtn=$('#selfie'),shutterBtn=$('#shutter'),record=$('#record'),capture=$('#captureCanvas'),notice=$('#captureNotice'),statusEl=$('#status'),instruction=$('#instruction'),recordTimer=$('#recordTimer');
+let stream=null,facing='environment',recorder=null,chunks=[],raf=0,timerId=0,recordStarted=0;
 
 function msg(t){notice.textContent=t;notice.classList.remove('hidden');setTimeout(()=>notice.classList.add('hidden'),1800)}
 function label(){cameraBtn.querySelector('b').textContent=facing==='user'?'Trasera':'Frontal'}
@@ -27,6 +27,6 @@ record.onclick=()=>{if(!stream){msg('ACTIVA LA CÁMARA');return}if(recorder?.sta
  chunks=[];const out=capture.captureStream(30),types=['video/mp4;codecs=avc1.42E01E','video/mp4','video/webm;codecs=vp8','video/webm'],mime=types.find(t=>MediaRecorder.isTypeSupported(t))||'';
  try{recorder=new MediaRecorder(out,mime?{mimeType:mime}:undefined)}catch(e){msg('VIDEO NO COMPATIBLE');return}
  recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};
- recorder.onstop=async()=>{cancelAnimationFrame(raf);const type=recorder.mimeType||mime||'video/webm',blob=new Blob(chunks,{type}),mp4=type.includes('mp4');record.classList.remove('recording');record.querySelector('b').textContent='Video';if(!mp4)msg('FORMATO WEBM: WHATSAPP PUEDE NO ACEPTARLO');await share(blob,'DeltaX-Panama-'+Date.now()+(mp4?'.mp4':'.webm'))};
- const draw=()=>{frame();raf=requestAnimationFrame(draw)};draw();recorder.start(500);record.classList.add('recording');record.querySelector('b').textContent='Detener';msg('GRABANDO')};
+ recorder.onstop=async()=>{cancelAnimationFrame(raf);clearInterval(timerId);recordTimer.textContent='00:00';recordTimer.classList.remove('show');const type=recorder.mimeType||mime||'video/webm',blob=new Blob(chunks,{type}),mp4=type.includes('mp4');record.classList.remove('recording');record.querySelector('b').textContent='Video';if(!mp4)msg('FORMATO WEBM: WHATSAPP PUEDE NO ACEPTARLO');await share(blob,'DeltaX-Panama-'+Date.now()+(mp4?'.mp4':'.webm'))};
+ const draw=()=>{frame();raf=requestAnimationFrame(draw)};draw();recorder.start(500);recordStarted=Date.now();recordTimer.textContent='00:00';recordTimer.classList.add('show');clearInterval(timerId);timerId=setInterval(()=>{const s=Math.floor((Date.now()-recordStarted)/1000),m=Math.floor(s/60),ss=s%60;recordTimer.textContent=String(m).padStart(2,'0')+':'+String(ss).padStart(2,'0')},250);record.classList.add('recording');record.querySelector('b').textContent='Detener';msg('GRABANDO')};
 window.addEventListener('beforeunload',()=>{if(stream)stream.getTracks().forEach(t=>t.stop());cancelAnimationFrame(raf)});
