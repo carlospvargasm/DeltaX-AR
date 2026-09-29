@@ -109,3 +109,19 @@
 #media .secondary-action b{font-size:9px!important;margin:0!important;color:#fff!important;font-weight:600}
 .share-svg{width:18px;height:18px;display:block}.dx-control{font:900 15px Arial;color:#f4d44d;line-height:1}
 @media(max-width:380px){#media .control-row-main{gap:27px}#media .control-row-secondary{gap:45px}}
+
+/* Panama 16 — directional mascot correction */
+#media .control-row-secondary{gap:0!important}
+.bird-a{top:17%!important;left:-24%!important;right:auto!important;transform:none!important;animation:birdLR 10s linear infinite!important}
+.bird-b{top:27%!important;right:-24%!important;left:auto!important;transform:scaleX(-1)!important;animation:birdRL 11s linear 1.5s infinite!important}
+.bird-c{top:auto!important;bottom:19%!important;left:-24%!important;right:auto!important;transform:none!important;animation:birdLRbottom 13s linear 4s infinite!important}
+.bird-d{left:1%!important;right:auto!important;top:auto!important;bottom:-18%!important;transform:rotate(-25deg)!important;animation:birdUp 12s linear 2s infinite!important}
+.bird-e{right:1%!important;left:auto!important;top:-18%!important;bottom:auto!important;transform:rotate(155deg)!important;animation:birdDown 13s linear 5s infinite!important}
+.bird-runner{top:auto!important;bottom:7%!important;left:-22%!important;right:auto!important;transform:none!important;animation:roadRunnerLR 7s linear 2s infinite!important}
+.bird-runner-reverse{display:none!important}
+@keyframes birdLR{0%,12%{left:-24%}88%,100%{left:110%}}
+@keyframes birdRL{0%,12%{right:-24%;transform:scaleX(-1)}88%,100%{right:110%;transform:scaleX(-1)}}
+@keyframes birdLRbottom{0%,18%{left:-24%}86%,100%{left:110%}}
+@keyframes birdUp{0%,15%{bottom:-18%;left:1%}85%,100%{bottom:110%;left:1%}}
+@keyframes birdDown{0%,15%{top:-18%;right:1%}85%,100%{top:110%;right:1%}}
+@keyframes roadRunnerLR{0%,58%{left:-22%;transform:translateY(0) rotate(-4deg)}64%{left:20%;transform:translateY(2px) rotate(3deg)}71%{left:108%;transform:translateY(0) rotate(-2deg)}100%{left:108%}}
